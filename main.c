@@ -30,11 +30,12 @@ void (*getOpFn(char *opcode))(stack_t **, unsigned int)
 
 /**
  * exec_line - execute line from monty bytecode
- * @stack: pointer to first node of the stack
  * @opcode: instruction to be executed
  * @line_number: line number of opcode
- */
-void exec_line(stack_t **stack, char *opcode, unsigned int *line_number, unsigned int n)
+ *
+ * Return: instrunction_t
+*/
+instruction_t *exec_line(char *opcode, unsigned int *line_number)
 {
 	instruction_t *func;
 
@@ -52,12 +53,7 @@ void exec_line(stack_t **stack, char *opcode, unsigned int *line_number, unsigne
 		fprintf(stderr, "L%d: unknown instruction %s\n", *line_number, opcode);
 		exit(EXIT_FAILURE);
 	}
-	else
-	{
-		func->f(stack, n);
-	}
-
-	free(func);
+	return (func);
 }
 
 /**
@@ -72,6 +68,7 @@ void readLine(FILE *file)
 	char line[100];
 	const char *delim = " \t\n";
 	char *token = NULL;
+	instruction_t *func;
 
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
@@ -88,7 +85,10 @@ void readLine(FILE *file)
 			else
 				n = atoi(token);
 		}
-		exec_line(&stack, opcode, &line_number, n);
+		func = exec_line(opcode, &line_number);
+		func->f(&stack, n);
+
+		free(func);
 		line_number++;
 	}
 	free_all(&stack);
