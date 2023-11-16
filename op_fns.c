@@ -65,8 +65,9 @@ void add_node_end(stack_t **stack, unsigned int line_number)
 /**
  * print_all - print line numbers from stack
  * @stack: pointer to first node of the stack
+ * @n: line number
 */
-void print_all(stack_t **stack)
+void print_all(stack_t **stack, unsigned int n __attribute__((unused)))
 {
 	stack_t *temp;
 
