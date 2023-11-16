@@ -1,5 +1,11 @@
 #ifndef HEADER
 #define HEADER
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -30,11 +36,12 @@ typedef struct instruction_s
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void add_node(stack_t **stack, unsigned int line_number);
+void add_node(stack_t **stack, int n);
+void add_node_end(stack_t **stack, int n);
+void free_stack(stack_t **stack);
 
-void add_node_end(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 
-void print_all(stack_t **stack, unsigned int line_number);
-
-void free_all(stack_t **stack);
+int isInt(char *s);
 #endif
