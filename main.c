@@ -8,7 +8,7 @@
  * @opcode: opcode
  *
  * Return: the function for the opcode or NULL
-*/
+ */
 void (*getOpFn(char *opcode))(stack_t **, unsigned int)
 {
 	instruction_t opFnArr[] = {
@@ -82,14 +82,12 @@ int main(int ac, char **av)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
 	file = fopen(av[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		token = strtok(line, delim);
@@ -97,14 +95,18 @@ int main(int ac, char **av)
 		token = strtok(NULL, delim);
 		if (token != NULL)
 		{
-			line_number = atoi(token);
+			if (token[0] != '0' && atoi(token) == 0)
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				exit(EXIT_FAILURE);
+			}
+			else
+				line_number = atoi(token);
 		}
 		exec_line(&stack, opcode, line_number);
+		line_number++;
 	}
-
 	free_all(&stack);
-
 	fclose(file);
-
 	return (0);
 }
