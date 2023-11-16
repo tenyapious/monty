@@ -34,7 +34,7 @@ void (*getOpFn(char *opcode))(stack_t **, unsigned int)
  * @opcode: instruction to be executed
  * @line_number: line number of opcode
  */
-void exec_line(stack_t **stack, char *opcode, int line_number)
+void exec_line(stack_t **stack, char *opcode, unsigned int *line_number, unsigned int n)
 {
 	instruction_t *func;
 
@@ -49,12 +49,12 @@ void exec_line(stack_t **stack, char *opcode, int line_number)
 
 	if (func->f == NULL)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+		fprintf(stderr, "L%d: unknown instruction %s\n", *line_number, opcode);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		func->f(stack, line_number);
+		func->f(stack, n);
 	}
 
 	free(func);
@@ -68,7 +68,7 @@ void readLine(FILE *file)
 {
 	stack_t *stack = NULL;
 	char *opcode;
-	unsigned int line_number;
+	unsigned int line_number = 1, n;
 	char line[100];
 	const char *delim = " \t\n";
 	char *token = NULL;
@@ -86,9 +86,9 @@ void readLine(FILE *file)
 				exit(EXIT_FAILURE);
 			}
 			else
-				line_number = atoi(token);
+				n = atoi(token);
 		}
-		exec_line(&stack, opcode, line_number);
+		exec_line(&stack, opcode, &line_number, n);
 		line_number++;
 	}
 	free_all(&stack);
