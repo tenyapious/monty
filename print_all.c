@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "monty.h"
 
-void print_list(stack_t **stack, unsigned int n __attribute__((unused)))
+void print_all(stack_t **stack)
 {
 	stack_t *temp;
 

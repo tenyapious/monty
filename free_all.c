@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "monty.h"
 
-void free_list(stack_t **head)
+void free_all(stack_t **head)
 {
 	stack_t *temp;
 

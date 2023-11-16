@@ -34,7 +34,7 @@ void add_node(stack_t **stack, unsigned int line_number);
 
 void add_node_end(stack_t **stack, unsigned int line_number);
 
-void print_list(stack_t **stack, unsigned int);
+void print_all(stack_t **stack);
 
-void free_list(stack_t **stack);
+void free_all(stack_t **stack);
 #endif
