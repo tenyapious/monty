@@ -21,7 +21,7 @@ void exec_line(stack_t **stack, char *opcode, int line_number)
 		}
 		else
 		{
-			fprintf(stderr, "L%d: unknown instruction %s", line_number, opcode);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 			exit(EXIT_FAILURE);
 		}
 }
@@ -52,7 +52,7 @@ int main(int ac, char **av)
 	file = fopen(av[1], "r");
 	if (file == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s", av[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 
