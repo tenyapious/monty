@@ -29,4 +29,12 @@ typedef struct instruction_s
 		char *opcode;
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+void add_node(stack_t **stack, unsigned int line_number);
+
+void add_node_end(stack_t **stack, unsigned int line_number);
+
+void print_list(stack_t **stack, unsigned int);
+
+void free_list(stack_t **stack);
 #endif
