@@ -75,7 +75,7 @@ void readLine(FILE *file)
 		token = strtok(line, delim);
 		opcode = token;
 		token = strtok(NULL, delim);
-		if (token != NULL)
+		if (token != NULL || strcmp(opcode, "push") == 0)
 		{
 			if (token[0] != '0' && atoi(token) == 0)
 			{
