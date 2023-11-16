@@ -2,14 +2,18 @@
 #include <stdlib.h>
 #include "monty.h"
 
-void free_all(stack_t **head)
+/**
+ * free_all - free stack
+ * @stack: pointer to first node of the stack
+*/
+void free_all(stack_t **stack)
 {
 	stack_t *temp;
 
-	while(*head != NULL)
+	while (*stack != NULL)
 	{
-		temp = *head;
-		*head = temp->next;
+		temp = *stack;
+		*stack = temp->next;
 		free(temp);
 	}
 }
