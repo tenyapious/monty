@@ -77,3 +77,20 @@ void free_stack(stack_t **stack)
 		free(temp);
 	}
 }
+
+/**
+ * remove_node - remove node from stack
+ * @stack: pointer to first node of the stack
+ */
+void remove_node(stack_t **stack)
+{
+	stack_t *temp;
+
+	temp = *stack;
+
+	*stack = temp->next;
+
+	free(temp);
+}
+
+

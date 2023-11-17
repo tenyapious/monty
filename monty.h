@@ -39,12 +39,15 @@ typedef struct instruction_s
 void add_node(stack_t **stack, int n);
 void add_node_end(stack_t **stack, int n);
 void free_stack(stack_t **stack);
+void remove_node(stack_t **stack);
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 
+int stack_len(stack_t **stack);
 int isInt(char *s);
 #endif

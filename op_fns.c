@@ -64,17 +64,31 @@ void pint(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
-
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	temp = *stack;
+	remove_node(stack);
+}
 
-	*stack = temp->next;
+/**
+ * swap - swap top two elements of the stuck
+ * @stack: pointer to first node of the stack
+ * @line_number: line number of pall operation
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int temp;
 
-	free(temp);
+	if (stack_len(stack) < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = (*stack)->next->n;
+	(*stack)->next->n = (*stack)->n;
+	(*stack)->n = temp;
 }
