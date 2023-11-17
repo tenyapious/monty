@@ -50,6 +50,8 @@ void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void division(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+
 
 int stack_len(stack_t **stack);
 int isInt(char *s);

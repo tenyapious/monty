@@ -79,3 +79,24 @@ void division(stack_t **stack, unsigned int line_number)
 	remove_node(stack);
 	(*stack)->n = result;
 }
+
+/**
+ * mul - mul the second top ele of the stack with the top ele of the stack.
+ * @stack: pointer to first node of the stack
+ * @line_number: line number of pall operation
+ */
+void mul(stack_t **stack, unsigned int line_number)
+{
+	int result;
+
+	if (stack_len(stack) < 2)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	result = ((*stack)->next->n) * ((*stack)->n);
+
+	remove_node(stack);
+	(*stack)->n = result;
+}

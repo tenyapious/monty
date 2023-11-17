@@ -18,6 +18,7 @@ void (*getOpFn(char *opcode))(stack_t **, unsigned int)
 		{"nop", nop},
 		{"sub", sub},
 		{"div", division},
+		{"mul", mul},
 {NULL, NULL}
 	};
 	int i = 0;
