@@ -54,7 +54,10 @@ void readLine(FILE *file)
 			opcode = strtok(line, delim);
 
 		if (opcode == NULL)
+		{
+			line_number++;
 			continue;
+		}
 
 		func = malloc(sizeof(instruction_t));
 		if (func == NULL)
