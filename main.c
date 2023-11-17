@@ -14,7 +14,8 @@ void (*getOpFn(char *opcode))(stack_t **, unsigned int)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
-		{NULL, NULL}
+		{"add", add},
+	{NULL, NULL}
 	};
 	int i = 0;
 
