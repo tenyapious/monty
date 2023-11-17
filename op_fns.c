@@ -41,3 +41,18 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		}
 	}
 }
+
+/**
+ * pint - print integer on top of stack
+ * @stack: pointer to first node of the stack
+ * @line_number: line number of pall operation
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}

@@ -11,6 +11,7 @@ void (*getOpFn(char *opcode))(stack_t **, unsigned int)
 	instruction_t opFnArr[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 	int i = 0;
