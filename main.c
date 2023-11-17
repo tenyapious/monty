@@ -49,9 +49,13 @@ void readLine(FILE *file)
 
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		token = strtok(line, delim);
-		opcode = token;
-
+		if (line[0] == '#')
+			opcode = "nop";
+		else
+		{
+			token = strtok(line, delim);
+			opcode = token;
+		}
 		func = malloc(sizeof(instruction_t));
 		if (func == NULL)
 		{
