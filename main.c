@@ -44,7 +44,6 @@ void readLine(FILE *file)
 	unsigned int line_number = 1;
 	char line[100];
 	const char *delim = " \t\n";
-	char *token = NULL;
 	instruction_t *func;
 
 	while (fgets(line, sizeof(line), file) != NULL)
@@ -52,10 +51,11 @@ void readLine(FILE *file)
 		if (line[0] == '#')
 			opcode = "nop";
 		else
-		{
-			token = strtok(line, delim);
-			opcode = token;
-		}
+			opcode = strtok(line, delim);
+
+		if (opcode == NULL)
+			continue;
+
 		func = malloc(sizeof(instruction_t));
 		if (func == NULL)
 		{
@@ -69,13 +69,10 @@ void readLine(FILE *file)
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 			exit(EXIT_FAILURE);
 		}
-
 		func->f(&stack, line_number);
-
 		free(func);
 		line_number++;
 	}
-
 	free_stack(&stack);
 }
 
