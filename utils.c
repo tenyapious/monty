@@ -12,6 +12,12 @@ int isInt(char *s)
 
 	while (s[i] != '\0')
 	{
+		if (s[i] == '-')
+		{
+			i++;
+			continue;
+		}
+
 		if (isdigit(s[i]) == 0)
 			return (0);
 		i++;
