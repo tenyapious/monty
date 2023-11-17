@@ -48,12 +48,11 @@ void readLine(FILE *file)
 
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		if (line[0] == '#')
-			opcode = "nop";
-		else
-			opcode = strtok(line, delim);
+		opcode = strtok(line, delim);
 
-		if (opcode == NULL)
+		if (opcode[0] == '#')
+			opcode = "nop";
+		else if (opcode == NULL)
 		{
 			line_number++;
 			continue;
