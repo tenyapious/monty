@@ -21,3 +21,14 @@ void add(stack_t **stack, unsigned int line_number)
 	remove_node(stack);
 	add_node(stack, sum);
 }
+
+/**
+ * nop - do nothing
+ * @stack: pointer to first node of the stack
+ * @line_number: line number of pall operation
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}

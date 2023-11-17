@@ -26,9 +26,10 @@ void push(stack_t **stack, unsigned int line_number)
  * @stack: pointer to first node of the stack
  * @line_number: line number of pall operation
  */
-void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
+	(void)line_number;
 
 	if (*stack != NULL)
 	{
